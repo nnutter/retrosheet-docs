@@ -1,0 +1,27 @@
+[project]
+name = "retrosheet-docs"
+version = "0.1.0"
+description = "Track changes to Retrosheet event file documentation"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "httpx>=0.28.1",
+    "markdownify>=1.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.uv]
+package = true

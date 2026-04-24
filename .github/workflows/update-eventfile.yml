@@ -1,0 +1,45 @@
+name: Update Retrosheet Event File
+
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-eventfile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version-file: .python-version
+
+      - name: Sync dependencies
+        run: uv sync --locked --dev
+
+      - name: Update snapshot
+        run: uv run python -m retrosheet_docs.update_eventfile
+
+      - name: Commit changes if needed
+        shell: bash
+        run: |
+          git add -N docs/eventfile.md
+
+          if git diff --quiet -- docs/eventfile.md; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -u
+          git add .python-version .gitignore .github/workflows/update-eventfile.yml README.md pyproject.toml docs/eventfile.md src/retrosheet_docs/__init__.py src/retrosheet_docs/update_eventfile.py tests/test_update_eventfile.py uv.lock
+          git commit -m "Update Retrosheet event file snapshot"
+          git push
