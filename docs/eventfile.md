@@ -432,7 +432,7 @@ Many event descriptions require information in the form of numbers.
 The meaning of a particular number depends on where it appears in the event.
 For the descriptions that follow the following notation will be used:
 
-> Fielders will be represented by a number in the range 1 (pitcher) to 9 (right fielder) using a dollar sign, "$". When two $ symbols are used, $$, this is understood to mean a sequence of two or more fielders.
+> Fielders will be represented by a number in the range 1 (pitcher) to 9 (right fielder) using a dollar sign, "$". When two $ symbols are used, \$\$, this is understood to mean a sequence of two or more fielders.
 >
 > Bases are represented by a percent sign, "%", representing one of five characters, 1, 2 and 3 for first through third; B or H for home. B is used when a batter advance must be explicitly given. Scoring is indicated by an advance that reaches home, H.
 
@@ -468,7 +468,7 @@ In the case that a fielder makes an unassisted out on a ground ball a modifier G
 > play,5,0,duncm001,00,X,3/G.2-3  
 >  indicates an unassisted out made by the first baseman with the runner on second advancing to third.
 
-$$ Strings of two or more fielders as an event specify a ground out where the put out is credited by the last fielder in the string.
+\$\$ Strings of two or more fielders as an event specify a ground out where the put out is credited by the last fielder in the string.
 Other fielders are credited with assists.
 
 > play,6,0,davie001,01,FX,63/G6M  
@@ -489,7 +489,7 @@ With the addition of a SH modifier this form is used to indicate sacrifice hits 
 
 > play,6,1,camik001,00,X,23/SH.1-2
 
-$(%)$ $$(%)$ Events of this form are used to code grounded into double plays.
+$(%)$ \$\$(%)$ Events of this form are used to code grounded into double plays.
 
 > play,7,0,backw001,11,FBX,64(1)3/GDP/G6  
 >  indicates a grounded into double play. The parenthesized 1 indicates the base runner on first was the initial out on the play. The GDP modifier is followed by a another / and a hit type and location.
@@ -640,9 +640,9 @@ BK indicates a balk.
 
 > play,6,0,niekp001,??,,BK.3-H;1-2
 
-CS%($$) is the event code for caught stealing.
+CS%(\$\$) is the event code for caught stealing.
 The bases, %, for this play are 2,3 and H.
-The fielding data, $$, is considered part of the play.
+The fielding data, \$\$, is considered part of the play.
 Other advances may be given.
 
 > play,5,1,ceror001,??,,CSH(12)
@@ -670,7 +670,7 @@ In both cases the catcher is unable to handle a pitch and a base runner advances
 >
 > play,1,1,evand002,01,CB,PB.2-3
 
-PO%($$) picked off of base % (1, 2 or 3) with the ($$) indicating the throw(s) and fielder making the putout.
+PO%(\$\$) picked off of base % (1, 2 or 3) with the (\$\$) indicating the throw(s) and fielder making the putout.
 
 > play,4,0,guerp001,00,22,PO2(14)  
 >  indicates the runner on second was out by a pick off throw from the pitcher to second baseman.
@@ -678,8 +678,8 @@ PO%($$) picked off of base % (1, 2 or 3) with the ($$) indicating the throw(s) a
 > play,1,1,wallt001,10,B11,PO1(E3).1-2  
 >  shows an attempt at a pick off at first with the first baseman committing an error that allows the runner to advance to second. The presence of the error (E3) negates the out normally associated with the pickoff play.
 
-POCS%($$) picked off off base % (2, 3 or H) with the runner charged with a caught stealing.
-The ($$) is the sequence of throws resulting in the out.
+POCS%(\$\$) picked off off base % (2, 3 or H) with the runner charged with a caught stealing.
+The (\$\$) is the sequence of throws resulting in the out.
 
 > play,6,1,javis001,10,B1,POCS2(1361)
 
