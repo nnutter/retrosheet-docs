@@ -57,6 +57,7 @@ def build_main_fragment(html: str) -> str:
     if heading is not None:
         drop_siblings_before(body, heading)
 
+    unwrap_blockquotes_with_h3(body)
     convert_inline_labels_to_headings(soup, body)
     normalize_text_nodes(body)
     prune_trailing_separators(body)
@@ -92,6 +93,13 @@ def prune_trailing_separators(body: Tag) -> None:
             child.extract()
             continue
         break
+
+
+def unwrap_blockquotes_with_h3(body: Tag) -> None:
+    for blockquote in body.find_all("blockquote"):
+        if blockquote.find("h3") is None:
+            continue
+        blockquote.unwrap()
 
 
 def convert_inline_labels_to_headings(soup: BeautifulSoup, body: Tag) -> None:

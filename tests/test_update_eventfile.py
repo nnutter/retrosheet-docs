@@ -103,3 +103,20 @@ def test_generate_markdown_promotes_play_label_to_heading() -> None:
     markdown = generate_markdown(html)
     assert "#### play" in markdown
     assert "The play records contain the events of the game." in markdown
+
+
+def test_generate_markdown_unwraps_blockquote_with_h3() -> None:
+    html = """
+    <html><body>
+      <h2><center>The Event File</center></h2>
+      <blockquote>
+        <h3>Info record types</h3>
+        <p>Complete records are shown.</p>
+      </blockquote>
+    </body></html>
+    """
+    markdown = generate_markdown(html)
+    assert "> ### Info record types" not in markdown
+    assert "### Info record types" in markdown
+    assert "> Complete records are shown." not in markdown
+    assert "Complete records are shown." in markdown
