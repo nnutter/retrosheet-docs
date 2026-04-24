@@ -225,7 +225,7 @@ The second field of the com record is quoted.
 
 > com,"ML debut for Behenna"
 
-If the comment begins with a "$", then that comment will appear in the narrative play by play account on the site.
+If the comment begins with a "<span>$</span>", then that comment will appear in the narrative play by play account on the site.
 
 There is a standard record ordering for each game.
 An *id* record starts the description of a particular game.
@@ -432,7 +432,7 @@ Many event descriptions require information in the form of numbers.
 The meaning of a particular number depends on where it appears in the event.
 For the descriptions that follow the following notation will be used:
 
-> Fielders will be represented by a number in the range 1 (pitcher) to 9 (right fielder) using a dollar sign, "$". When two $ symbols are used, \$\$, this is understood to mean a sequence of two or more fielders.
+> Fielders will be represented by a number in the range 1 (pitcher) to 9 (right fielder) using a dollar sign, "<span>$</span>". When two <span>$</span> symbols are used, <span>$</span><span>$</span>, this is understood to mean a sequence of two or more fielders.
 >
 > Bases are represented by a percent sign, "%", representing one of five characters, 1, 2 and 3 for first through third; B or H for home. B is used when a batter advance must be explicitly given. Scoring is indicated by an advance that reaches home, H.
 
@@ -451,7 +451,7 @@ For purposes of description, it is convenient to separate the event types into t
 
 ### Events made by the batter at the plate
 
-$ A single fielder represents an unassisted out made by the specified fielder.
+<span>$</span> A single fielder represents an unassisted out made by the specified fielder.
 Modifiers can be added to indicate the batted ball trajectory: G for ground ball, L for line drive, P for pop up, F for a fly ball BG for bunt grounder, BP for bunt pop up.
 The ball trajectory code may be followed by a hit location code.
 
@@ -468,7 +468,7 @@ In the case that a fielder makes an unassisted out on a ground ball a modifier G
 > play,5,0,duncm001,00,X,3/G.2-3  
 >  indicates an unassisted out made by the first baseman with the runner on second advancing to third.
 
-\$\$ Strings of two or more fielders as an event specify a ground out where the put out is credited by the last fielder in the string.
+<span>$</span><span>$</span> Strings of two or more fielders as an event specify a ground out where the put out is credited by the last fielder in the string.
 Other fielders are credited with assists.
 
 > play,6,0,davie001,01,FX,63/G6M  
@@ -489,7 +489,7 @@ With the addition of a SH modifier this form is used to indicate sacrifice hits 
 
 > play,6,1,camik001,00,X,23/SH.1-2
 
-$(%)$ \$\$(%)$ Events of this form are used to code grounded into double plays.
+<span>$</span>(%)<span>$</span> <span>$</span><span>$</span>(%)<span>$</span> Events of this form are used to code grounded into double plays.
 
 > play,7,0,backw001,11,FBX,64(1)3/GDP/G6  
 >  indicates a grounded into double play. The parenthesized 1 indicates the base runner on first was the initial out on the play. The GDP modifier is followed by a another / and a hit type and location.
@@ -497,7 +497,7 @@ $(%)$ \$\$(%)$ Events of this form are used to code grounded into double plays.
 > play,8,1,smito001,22,BFCBX,4(1)3/G4/GDP  
 >  An unassisted ground ball out by the second baseman starts this double play.
 
-$(B)$(%) followed by the modifier LDP is used to indicate a lined into double play.
+<span>$</span>(B)<span>$</span>(%) followed by the modifier LDP is used to indicate a lined into double play.
 
 > play,7,0,leonj001,01,CX,8(B)84(2)/LDP/L8  
 >  indicates a line drive out to the center fielder with the runner on second doubled up.
@@ -522,7 +522,7 @@ A redundant B-1 is allowed.
 C/E1 or C/E3 are used when the pitcher or first baseman are called for interfering with the batter putting him on first without being charged with an at bat.
 In these cases C is interpreted as interference by the fielder specified following the E, not the catcher.
 
-S$ single D$ double T$ triple A hit (excepting a home run) is indicated by one of S, D and T optionally followed by the fielder, $, initially handling the ball.
+S<span>$</span> single D<span>$</span> double T<span>$</span> triple A hit (excepting a home run) is indicated by one of S, D and T optionally followed by the fielder, <span>$</span>, initially handling the ball.
 If more than one fielder handles the ball the appropriate sequence of fielders is given.
 The fielder designation is omitted if that information is not known.
 The batter advance to the designated base is implicit.
@@ -541,8 +541,8 @@ No fielding player is specified.
 
 > play,3,0,surhb001,10,.BX,DGR/L9LS.2-H
 
-E$ (or $E$) is the code for an error allowing a batter to get on base.
-The fielder making the error is given by $.
+E<span>$</span> (or <span>$</span>E<span>$</span>) is the code for an error allowing a batter to get on base.
+The fielder making the error is given by <span>$</span>.
 The batter advance to first is implicit but may be given explicitly.
 
 > play,2,0,ruffb001,10,BX,E1/TH/BG15.1-3  
@@ -553,7 +553,7 @@ The batter advance to first is implicit but may be given explicitly.
 >
 > If the "E" is preceded by one or more numbers, these indicate fielders who were credited with assists on the play, e.g., 3E1 would indicate an assist for the first baseman and an error on the pitcher (presumably for dropping the first baseman's toss at first base).
 
-FC$ Fielder's choice. $ is the fielder first fielding the ball.
+FC<span>$</span> Fielder's choice. <span>$</span> is the fielder first fielding the ball.
 The batter advance to first is understood if it is not given explicitly.
 
 > play,4,0,harpb001,22,BBFSFX,FC5/G5.3XH(52)  
@@ -564,7 +564,7 @@ The batter advance to first is understood if it is not given explicitly.
 >
 > Note that even though force outs are considered fielder's choices, the notation distinguishes between force outs and non-forced fielder's choices.
 
-FLE$ Error on foul fly ball.
+FLE<span>$</span> Error on foul fly ball.
 
 > play,5,0,murre001,00,F,FLE5/P5F
 
@@ -577,7 +577,7 @@ The location modifier can be used to indicate where the ball left the playing fi
 > play,12,1,bichd001,02,FFFX,HR/F78XD.2-H;1-H  
 >  shows a home run to center field with the runners on first and second scoring.
 
-H$ or HR$ indicates an inside-the-park home run by giving a fielder as part of the code.
+H<span>$</span> or HR<span>$</span> indicates an inside-the-park home run by giving a fielder as part of the code.
 
 > play,4,0,younr001,32,FBFFFBBX,HR9/F9LS.3-H;1-H
 
@@ -595,7 +595,7 @@ K Strike out
 >  A dropped third strike with a putout at first base is given by the event K23.
 
 K+event On third strikes various base running play may also occur.
-The event can be SB%, CS%, OA, PO%, PB, WP and E$.
+The event can be SB%, CS%, OA, PO%, PB, WP and E<span>$</span>.
 
 > play,2,0,roomr001,12,1BF1S11S,K+PB.1-2  
 >  A passed ball on strike three allowed the runner on first to go to second.
@@ -622,7 +622,7 @@ The batter advance to first base is implicit.
 
 W+event, IW+event.
 On ball four various base running plays may also occur.
-The event can be SB%, CS%, PO%, PB, WP and E$.
+The event can be SB%, CS%, PO%, PB, WP and E<span>$</span>.
 
 > play,1,1,sandr001,32,C1FBB.BFB,W+WP.2-3  
 >  The fourth ball was a wild pitch allowing the runner on second to advance.
@@ -640,9 +640,9 @@ BK indicates a balk.
 
 > play,6,0,niekp001,??,,BK.3-H;1-2
 
-CS%(\$\$) is the event code for caught stealing.
+CS%(<span>$</span><span>$</span>) is the event code for caught stealing.
 The bases, %, for this play are 2,3 and H.
-The fielding data, \$\$, is considered part of the play.
+The fielding data, <span>$</span><span>$</span>, is considered part of the play.
 Other advances may be given.
 
 > play,5,1,ceror001,??,,CSH(12)
@@ -670,7 +670,7 @@ In both cases the catcher is unable to handle a pitch and a base runner advances
 >
 > play,1,1,evand002,01,CB,PB.2-3
 
-PO%(\$\$) picked off of base % (1, 2 or 3) with the (\$\$) indicating the throw(s) and fielder making the putout.
+PO%(<span>$</span><span>$</span>) picked off of base % (1, 2 or 3) with the (<span>$</span><span>$</span>) indicating the throw(s) and fielder making the putout.
 
 > play,4,0,guerp001,00,22,PO2(14)  
 >  indicates the runner on second was out by a pick off throw from the pitcher to second baseman.
@@ -678,8 +678,8 @@ PO%(\$\$) picked off of base % (1, 2 or 3) with the (\$\$) indicating the throw(
 > play,1,1,wallt001,10,B11,PO1(E3).1-2  
 >  shows an attempt at a pick off at first with the first baseman committing an error that allows the runner to advance to second. The presence of the error (E3) negates the out normally associated with the pickoff play.
 
-POCS%(\$\$) picked off off base % (2, 3 or H) with the runner charged with a caught stealing.
-The (\$\$) is the sequence of throws resulting in the out.
+POCS%(<span>$</span><span>$</span>) picked off off base % (2, 3 or H) with the runner charged with a caught stealing.
+The (<span>$</span><span>$</span>) is the sequence of throws resulting in the out.
 
 > play,6,1,javis001,10,B1,POCS2(1361)
 
@@ -697,10 +697,10 @@ The bases, %, for this play are 2,3 and H.
 ### Play modifiers and explanations
 
 Each modifier is preceded by / in a play record.
-As always, % indicates one the four bases and $ indicates a fielder.
+As always, % indicates one the four bases and <span>$</span> indicates a fielder.
 
 ```
- AP appeal play BP pop up bunt BG ground ball bunt BGDP bunt grounded into double play BINT batter interference BL line drive bunt BOOT batting out of turn BP bunt pop up BPDP bunt popped into double play BR runner hit by batted ball C called third strike COUB courtesy batter COUF courtesy fielder COUR courtesy runner DP unspecified double play E$ error on $ F fly FDP fly ball double play FINT fan interference FL foul FO force out G ground ball GDP ground ball double play GTP ground ball triple play IF infield fly rule INT interference IPHR inside the park home run L line drive LDP lined into double play LTP lined into triple play MREV manager challenge of call on the field NDP no double play credited for this play OBS obstruction (fielder obstructing a runner) P pop fly PASS a runner passed another runner and was called out R$ relay throw from the initial fielder to $ with no out made RINT runner interference SF sacrifice fly SH sacrifice hit (bunt) TH throw TH% throw to base % TP unspecified triple play UINT umpire interference UREV umpire review of call on the field
+ AP appeal play BP pop up bunt BG ground ball bunt BGDP bunt grounded into double play BINT batter interference BL line drive bunt BOOT batting out of turn BP bunt pop up BPDP bunt popped into double play BR runner hit by batted ball C called third strike COUB courtesy batter COUF courtesy fielder COUR courtesy runner DP unspecified double play E<span>$</span> error on <span>$</span> F fly FDP fly ball double play FINT fan interference FL foul FO force out G ground ball GDP ground ball double play GTP ground ball triple play IF infield fly rule INT interference IPHR inside the park home run L line drive LDP lined into double play LTP lined into triple play MREV manager challenge of call on the field NDP no double play credited for this play OBS obstruction (fielder obstructing a runner) P pop fly PASS a runner passed another runner and was called out R<span>$</span> relay throw from the initial fielder to <span>$</span> with no out made RINT runner interference SF sacrifice fly SH sacrifice hit (bunt) TH throw TH% throw to base % TP unspecified triple play UINT umpire interference UREV umpire review of call on the field
 
 ---
 
@@ -749,7 +749,7 @@ Parameters are used to indicate if a run is unearned (UR) and if RBI is to be cr
 
 Interference can be indicated with an advance parameter. An alternative way of writing this is (5/INT).
 > play,2,0,stanp001,12,CCBX,S/L9S.3-H;2X3(5/INT);1-2  
->  com,"$Gonzalez out for grabbing coach on way back to 3B"
+>  com,"<span>$</span>Gonzalez out for grabbing coach on way back to 3B"
 
 Team unearned runs are indicated by TUR in cases with more than one pitcher in the inning and the current pitcher is to be charged with an earned run.
 > play,5,1,ashba001,??,,S9.3-H(TUR);2-H(TUR);1-3;BX2(93)

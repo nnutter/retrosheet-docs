@@ -268,7 +268,7 @@ def normalize_markdown(markdown: str) -> str:
         normalized_parts.append(block)
 
     normalized = "".join(normalized_parts).strip() + "\n"
-    return normalized.replace("$$", r"\$\$")
+    return normalized.replace("$", "<span>$</span>")
 
 
 def is_plain_paragraph(block: str) -> bool:
